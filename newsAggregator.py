@@ -1,15 +1,12 @@
 from newsAPI import newsAPI
 from redditAPI import redditAPI
-from news import news
 
 
 class newsAggregator:
-    api_list: list = []
-    news_list: list = []
 
     def __init__(self):
-        self.api_list.append(newsAPI())
-        self.api_list.append(redditAPI())
+        self.api_list: list = [newsAPI(), redditAPI()]
+        self.news_list: list = []
 
     def run(self, topic: str = "news"):
         if topic == "news":
@@ -22,8 +19,6 @@ class newsAggregator:
                 api_news_list = api.search(topic)
                 for data in api_news_list:
                     self.news_list.append(data)
-
-        self.display_news()
 
     def display_news(self):
         print("[")
