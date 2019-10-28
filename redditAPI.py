@@ -4,7 +4,7 @@ from news import news
 
 
 class redditAPI(api):
-    limit: int = 10
+    limit: int = 2
     access_token: str
 
     def __init__(self):

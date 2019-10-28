@@ -9,7 +9,7 @@ class newsAPI(api):
 
     apiKey: str = 'c23b5e92a669409a89acbb9c2c4362b6'
     url: str = 'https://newsapi.org/v2/everything'
-    limit: int = 10
+    limit: int = 2
 
     # returns only the wanted fields from the dictionary
     def clean_data(self, data: dict) -> list:
