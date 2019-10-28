@@ -23,7 +23,9 @@ class redditAPI(api):
     def clean_data(self, data: list) -> list:
         cleaned_data: list = []
         for datum in data:
-            cleaned_data.append(news(datum['data']['title'], datum['data']['url'], 'reddit'))
+            # only extract wanted fields from the article details.
+            current_article = news(datum['data']['title'], datum['data']['url'], 'reddit')
+            cleaned_data.append(current_article)
             if len(cleaned_data) == self.articles_limit:
                 break
 
@@ -33,6 +35,7 @@ class redditAPI(api):
         headers = {"Authorization": "bearer " + self.access_token,
                    "User-Agent": "Chrome/77"}
         response = requests.get("https://oauth.reddit.com/r/news", headers=headers)
+        # send articles only to clean_data
         return self.clean_data(response.json()['data']['children'])
 
     def search(self, topic: str) -> list:

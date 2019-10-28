@@ -10,6 +10,7 @@ class newsAggregator:
 
     def run(self, topic: str = "news"):
         if topic == "news":
+            # run list function for each api we have
             for api in self.api_list:
                 api_news_list = api.list()
                 for data in api_news_list:
@@ -19,9 +20,3 @@ class newsAggregator:
                 api_news_list = api.search(topic)
                 for data in api_news_list:
                     self.news_list.append(data)
-
-    def display_news(self):
-        print("[")
-        for data in self.news_list:
-            data.display()
-        print("]")

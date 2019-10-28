@@ -36,7 +36,7 @@ def test_reddit_api():
     return True
 
 
-# tests that aggregator is returning combination of news api and reddit api in case of search and list features
+# tests that aggregator is returning combination of news from both APIs in case of search and list features
 def test_news_aggregator() -> bool:
     news_aggregator.run()
     articles_list: list = news_aggregator.news_list
