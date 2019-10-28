@@ -4,13 +4,14 @@ from news import news
 
 
 class redditAPI(api):
-    limit: int = 2
+    articles_limit: int = 2
     access_token: str
 
     def __init__(self):
         self.authorize()
 
     def authorize(self):
+        # in order to use reddit API, developer must first login to acquire an access token.
         url: str = 'https://www.reddit.com/api/v1/access_token'
         client_auth = requests.auth.HTTPBasicAuth('K7DpdijP_n1gog', 'RmI_VxVkHGnGwtUTRVNOnF4YSw4')
         params = {'grant_type': 'password', 'username': 'ahmed-morsy21', 'password': 'ahmed-morsy21'}
@@ -23,7 +24,7 @@ class redditAPI(api):
         cleaned_data: list = []
         for datum in data:
             cleaned_data.append(news(datum['data']['title'], datum['data']['url'], 'reddit'))
-            if len(cleaned_data) == self.limit:
+            if len(cleaned_data) == self.articles_limit:
                 break
 
         return cleaned_data

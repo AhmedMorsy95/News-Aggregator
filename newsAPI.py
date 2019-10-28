@@ -9,14 +9,14 @@ class newsAPI(api):
 
     apiKey: str = 'c23b5e92a669409a89acbb9c2c4362b6'
     url: str = 'https://newsapi.org/v2/everything'
-    limit: int = 2
+    articles_limit: int = 2
 
     # returns only the wanted fields from the dictionary
     def clean_data(self, data: dict) -> list:
         cleaned_data: list = []
         for datum in data:
             cleaned_data.append(news(datum['title'], datum['url'], 'newsapi'))
-            if len(cleaned_data) == self.limit:
+            if len(cleaned_data) == self.articles_limit:
                 break
 
         return cleaned_data
