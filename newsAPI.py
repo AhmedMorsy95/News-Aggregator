@@ -29,4 +29,5 @@ class newsAPI(api):
     def search(self, topic: str) -> list:
         payload = {'apiKey': self.apiKey, 'q': topic}
         response = requests.get(self.url, params=payload)
-        return response.json()
+        return self.clean_data(response.json()['articles'])
+
