@@ -16,7 +16,7 @@ It provides 2 features:
 2. Add an instance from the new API to the api_list in newsAggregator Class.
 3. Update Unit tests.
 
-## Cloning and running the Project
+## Cloning and running the Project (Ubuntu)
 The project comes with a python virtual environment which has all the dependencies.
 1. Clone the project.
 2. Open the terminal at the project directory.
